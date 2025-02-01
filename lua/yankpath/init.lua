@@ -8,8 +8,8 @@ end
 
 Yank.path = reg('%:.')
 Yank.absolute_path = reg('%')
-Yank.filename = reg('%:t')
-Yank.filename_no_ext = reg('%:t:r')
+Yank.filename = reg('%:t:r')
+Yank.filename_with_ext = reg('%:t')
 
 Yank._initialized = false
 
@@ -25,7 +25,7 @@ Yank.setup = function(opts)
     path = "yp",
     absolute_path = "ypa",
     filename = "ypf",
-    filename_no_ext = "ypfx",
+    filename_with_ext = "ypx",
   }
 
   for key, value in pairs(Yank.keymaps) do

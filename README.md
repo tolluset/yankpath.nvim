@@ -7,7 +7,7 @@
 - `yp`: yank relative path
 - `ypa`: yank absolute path
 - `ypf`: yank filename
-- `ypfx`: yank filename without extension
+- `ypx`: yank filename with extension
 
 ## Installation
 
@@ -45,8 +45,8 @@ return {
       keymaps = {
         path = "yrp", -- e.g.) change from yp to yrp
         absolute_path = "yrpa",
-        filename = "yrf",
-        filename_no_ext = "yrfx",
+        filename = "yrpf",
+        filename_no_ext = "yrpx",
       }
     })
   end
@@ -65,5 +65,5 @@ local map = LazyVim.safe_keymap_set
 map("n", "yp", ':let @+ = expand("%:.")<CR>', { desc = "Yank current files's path" })
 map("n", "ypa", ':let @+ = expand("%")<CR>', { desc = "Yank current file's absolute path" })
 map("n", "ypf", ':let @+ = expand("%:t")<CR>', { desc = "Yank current file's filename" })
-map("n", "ypfx", ':let @+ = expand("%:t:r")<CR>', { desc = "Yank current file's filename no ext" })
+map("n", "ypx", ':let @+ = expand("%:t:r")<CR>', { desc = "Yank current file's filename with ext" })
 ```
