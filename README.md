@@ -4,10 +4,10 @@
 
 ## Features
 
-- `<leader>yp`: yank relative path
-- `<leader>ypa`: yank absolute path
-- `<leader>ypf`: yank filename
-- `<leader>ypfx`: yank filename without extension
+- `yp`: yank relative path
+- `ypa`: yank absolute path
+- `ypf`: yank filename
+- `ypfx`: yank filename without extension
 
 ## Installation
 
@@ -35,10 +35,10 @@ return {
   config = function()
     require('yankpath').setup({
       keymaps = {
-        path = "<leader>yrp", -- e.g.) change from yp to yrp
-        absolute_path = "<leader>yrpa",
-        filename = "<leader>yrf",
-        filename_no_ext = "<leader>yrfx",
+        path = "yrp", -- e.g.) change from yp to yrp
+        absolute_path = "yrpa",
+        filename = "yrf",
+        filename_no_ext = "yrfx",
       }
     })
   end
@@ -54,8 +54,8 @@ e.g.) lazy.nvim
 ```lua
 local map = LazyVim.safe_keymap_set
 
-map("n", "<leader>yp", ':let @+ = expand("%:.")<CR>', { desc = "Yank current files's path" })
-map("n", "<leader>ypa", ':let @+ = expand("%")<CR>', { desc = "Yank current file's absolute path" })
-map("n", "<leader>ypf", ':let @+ = expand("%:t")<CR>', { desc = "Yank current file's filename" })
-map("n", "<leader>ypfx", ':let @+ = expand("%:t:r")<CR>', { desc = "Yank current file's filename no ext" })
+map("n", "yp", ':let @+ = expand("%:.")<CR>', { desc = "Yank current files's path" })
+map("n", "ypa", ':let @+ = expand("%")<CR>', { desc = "Yank current file's absolute path" })
+map("n", "ypf", ':let @+ = expand("%:t")<CR>', { desc = "Yank current file's filename" })
+map("n", "ypfx", ':let @+ = expand("%:t:r")<CR>', { desc = "Yank current file's filename no ext" })
 ```
