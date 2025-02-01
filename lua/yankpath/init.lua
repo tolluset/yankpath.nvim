@@ -30,7 +30,7 @@ Yank.setup = function(opts)
 
   for key, value in pairs(Yank.keymaps) do
     vim.keymap.set('n', value, Yank[key], {
-      desc = "Yank current file's " ..key:gsub('_', ''),
+      desc = "Yank current file's " ..key:gsub('_', ' '),
       noremap = true,
       silent = true
     })
