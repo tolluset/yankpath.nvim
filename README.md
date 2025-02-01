@@ -16,13 +16,21 @@
 ```lua
 return {
   "tolluset/yankpath.nvim",
+  config = function ()
+    require('yankpath').setup()
+  end
 }
 ```
 
 - packer
 
 ```lua
-use "tolluset/yankpath.nvim"
+use {
+  "tolluset/yankpath.nvim",
+  config = function ()
+    require('yankpath').setup()
+  end
+}
 ```
 
 ## Keymaps
