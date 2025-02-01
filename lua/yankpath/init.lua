@@ -1,22 +1,17 @@
 local Yank = {}
 
-function Yank.path()
-  vim.fn.setreg('+', vim.fn.expand('%:.'))
+local function reg(expr)
+  return function()
+    vim.fn.setreg('+', vim.fn.expand(expr))
+  end
 end
 
-function Yank.absolute_path()
-  vim.fn.setreg('+', vim.fn.expand('%'))
-end
+Yank.path = reg('%:.')
+Yank.absolute_path = reg('%')
+Yank.filename = reg('%:t')
+Yank.filename_no_ext = reg('%:t:r')
 
-function Yank.filename()
-  vim.fn.setreg('+', vim.fn.expand('%:t'))
-end
-
-function Yank.filename_no_ext()
-  vim.fn.setreg('+', vim.fn.expand('%:t:r'))
-end
-
-function Yank.setup(opts)
+Yank.setup = function(opts)
   opts = opts or {}
   Yank.keymaps = opts.keymaps or {
     path = "<leader>yp",
@@ -25,10 +20,13 @@ function Yank.setup(opts)
     filename_no_ext = "<leader>ypfx",
   }
 
-  vim.keymap.set('n', Yank.keymaps.path, Yank.path, { desc = "Copy current file's relative path", noremap = true, silent = true })
-  vim.keymap.set('n', Yank.keymaps.absolute_path, Yank.absolute_path, { desc = "Copy current file's absolute path", noremap = true, silent = true })
-  vim.keymap.set('n', Yank.keymaps.filename, Yank.filename, { desc = "Copy current file name", noremap = true, silent = true })
-  vim.keymap.set('n', Yank.keymaps.filename_no_ext, Yank.filename_no_ext, { desc = "Copy current file name without extension", noremap = true, silent = true })
+  for name, key in pairs(Yank.keymaps) do
+    vim.keymap.set('n', key, Yank[name], {
+      desc = "Yank current file's " ..name:gsub('_', ''),
+      noremap = true,
+      silent = true
+    })
+  end
 end
 
 return Yank
