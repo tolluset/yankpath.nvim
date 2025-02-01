@@ -29,8 +29,7 @@ Yank.setup = function(opts)
   }
 
   for name, key in pairs(Yank.keymaps) do
-    vim.keymap.set('n', key, Yank[name], {
-      desc = "Yank current file's " ..name:gsub('_', ''),
+    vim.api.nvim_set_keymap('n', key, ":lua require'yankpath'." .. name .. "()<CR>", {
       noremap = true,
       silent = true
     })
