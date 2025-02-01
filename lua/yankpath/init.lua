@@ -22,14 +22,15 @@ Yank.setup = function(opts)
 
   opts = opts or {}
   Yank.keymaps = opts.keymaps or {
-    path = "<leader>yp",
-    absolute_path = "<leader>ypa",
-    filename = "<leader>ypf",
-    filename_no_ext = "<leader>ypfx",
+    path = "yp",
+    absolute_path = "ypa",
+    filename = "ypf",
+    filename_no_ext = "ypfx",
   }
 
   for name, key in pairs(Yank.keymaps) do
-    vim.api.nvim_set_keymap('n', key, ":lua require'yankpath'." .. name .. "()<CR>", {
+    vim.keymap.set('n', key, Yank[name], {
+      desc = "Yank current file's " ..name:gsub('_', ''),
       noremap = true,
       silent = true
     })
