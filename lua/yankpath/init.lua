@@ -29,4 +29,6 @@ Yank.setup = function(opts)
   end
 end
 
+Yank.setup()
+
 return Yank
