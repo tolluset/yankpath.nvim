@@ -11,7 +11,15 @@ Yank.absolute_path = reg('%')
 Yank.filename = reg('%:t')
 Yank.filename_no_ext = reg('%:t:r')
 
+Yank._initialized = false
+
 Yank.setup = function(opts)
+  if Yank._initialized then
+    return
+  end
+
+  Yank._initialized = true
+
   opts = opts or {}
   Yank.keymaps = opts.keymaps or {
     path = "<leader>yp",
