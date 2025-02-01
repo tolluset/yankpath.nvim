@@ -1,6 +1,6 @@
 ## Overview
 
-`yankpath` is a simple NeoVim plugin for yank path or filename. You can use without installation, just add keymaps to it.
+`yankpath` is a simple NeoVim plugin for yank path or filename. You can use [without installation](https://github.com/tolluset/yankpath.nvim#without-installation), just add keymaps to it.
 
 ## Features
 
