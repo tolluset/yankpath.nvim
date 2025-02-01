@@ -28,9 +28,9 @@ Yank.setup = function(opts)
     filename_no_ext = "ypfx",
   }
 
-  for name, key in pairs(Yank.keymaps) do
-    vim.keymap.set('n', key, Yank[name], {
-      desc = "Yank current file's " ..name:gsub('_', ''),
+  for key, value in pairs(Yank.keymaps) do
+    vim.keymap.set('n', value, Yank[key], {
+      desc = "Yank current file's " ..key:gsub('_', ''),
       noremap = true,
       silent = true
     })
